@@ -1,8 +1,6 @@
 using UnityEngine;
-using UnityEngine.Serialization;
-using Util;
 
-namespace Sound
+namespace Util
 {
     public class SoundManager : Singleton<SoundManager>
     {
