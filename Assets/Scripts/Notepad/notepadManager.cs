@@ -17,8 +17,8 @@ namespace UI
 
         private void Update()
         {
-            if (Input.GetKeyDown(KeyCode.UpArrow))
-                ToggleNotepad();
+            if (Input.GetKeyDown(KeyCode.UpArrow)) // checked voor input
+                ToggleNotepad(); // Toggled Notepad open/dicht
 
             if (_isOpen && Input.GetKeyDown(KeyCode.Escape))
                 ToggleNotepad();
@@ -26,6 +26,7 @@ namespace UI
 
         private void ToggleNotepad()
         {
+            // logica voor open en dicht doen
             _isOpen = !_isOpen;
             notepadUI.SetActive(_isOpen);
 
@@ -37,6 +38,7 @@ namespace UI
 
         private void OpenNotepad()
         {
+            //Activate de input van de toetsen
             inputField.ActivateInputField();
             inputField.Select();
         }
