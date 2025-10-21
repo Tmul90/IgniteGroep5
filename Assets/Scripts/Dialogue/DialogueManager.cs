@@ -1,11 +1,8 @@
-using System.Collections.Generic;
 using UnityEngine;
 using Util;
 
 public class DialogueManager : Singleton<DialogueManager>
 {
-    private readonly Dictionary<string, DialogueData> _dialogueDict = new(); // Dictionary with the first value the Dialogue ID and the second the DialogueData
-
     /// <summary>
     /// Retrieves all Dialogues at the awake step
     /// </summary>
@@ -21,7 +18,7 @@ public class DialogueManager : Singleton<DialogueManager>
         foreach (var file in dialogueFiles)
         {
             var entry = JsonUtility.FromJson<DialogueData>(file.text);
-            _dialogueDict.Add(entry.id.ToString(), entry);
+            DialogueLibrary._dialogueDict.Add(entry.id, entry);
         }
     }
 
@@ -30,11 +27,11 @@ public class DialogueManager : Singleton<DialogueManager>
     /// </summary>
     /// <param name="id">The id of the dialogue</param>
     /// <returns>The DialogueData Containing the Dialogue</returns>
-    public DialogueData GetDialogueById(string id)
+    public DialogueData GetDialogueDataById(string id)
     {
-        if (_dialogueDict.TryGetValue(id, out var entry))
+        if (DialogueLibrary._dialogueDict.TryGetValue(id, out var entry))
         {
-            Debug.LogWarning($"Retrieved '{_dialogueDict.Count}' dialogues.'");
+            Debug.LogWarning($"Retrieved '{DialogueLibrary._dialogueDict.Count}' dialogues.'");
             return entry;
         }
         
