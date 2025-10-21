@@ -4,24 +4,24 @@ using Util;
 
 public class DialogueManager : Singleton<DialogueManager>
 {
-    private Dictionary<string, DialogueData> dialogueDict = new(); // Dictionary with the first value the Dialogue ID and the second the DialogueData
+    private readonly Dictionary<string, DialogueData> _dialogueDict = new(); // Dictionary with the first value the Dialogue ID and the second the DialogueData
 
     /// <summary>
     /// Retrieves all Dialogues at the awake step
     /// </summary>
-    private void Awake() => RetrieveAllDialogues();
+    private new void Awake() => RetrieveAllDialogues();
 
     /// <summary>
     /// Searches the Resource/Dialogues folder for any TextAsset files and adds them to the Dictionary in the form of DialogueData
     /// </summary>
     private void RetrieveAllDialogues()
     {
-        TextAsset[] _dialogueFiles = Resources.LoadAll<TextAsset>("Dialogues");
+        var dialogueFiles = Resources.LoadAll<TextAsset>("Dialogues");
 
-        foreach (TextAsset file in _dialogueFiles)
+        foreach (var file in dialogueFiles)
         {
             var entry = JsonUtility.FromJson<DialogueData>(file.text);
-            dialogueDict.Add(entry.id.ToString(), entry);
+            _dialogueDict.Add(entry.id.ToString(), entry);
         }
     }
 
@@ -32,9 +32,9 @@ public class DialogueManager : Singleton<DialogueManager>
     /// <returns>The DialogueData Containing the Dialogue</returns>
     public DialogueData GetDialogueById(string id)
     {
-        if (dialogueDict.TryGetValue(id, out DialogueData entry))
+        if (_dialogueDict.TryGetValue(id, out var entry))
         {
-            Debug.LogWarning($"Retrieved '{dialogueDict.Count}' dialogues.'");
+            Debug.LogWarning($"Retrieved '{_dialogueDict.Count}' dialogues.'");
             return entry;
         }
         
