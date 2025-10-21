@@ -10,11 +10,8 @@ namespace UI
 
         private bool _isOpen = false; // Let op of notepad open is
 
-        private void Start()
-        {
-            notepadUI.SetActive(false);
-        }
-
+        private void Start() => notepadUI.SetActive(false);
+        
         private void Update()
         {
             if (Input.GetKeyDown(KeyCode.UpArrow)) // checked voor input
@@ -43,9 +40,7 @@ namespace UI
             inputField.Select();
         }
 
-        private void CloseNotepad()
-        {
-            inputField.DeactivateInputField();
-        }
+        private void CloseNotepad() => inputField.DeactivateInputField();
+        
     }
 }
