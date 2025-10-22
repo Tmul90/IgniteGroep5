@@ -1,11 +1,9 @@
 {
-  "id": "0.0",
+  "id": "1",
   "dialogues": [
-    "Hello world!",
-    "Goodbye World!"
+    "Hello world!"
   ],
   "playerResponses": [
-    "Hi world My name is Hello",
-    "She Hello on my world until i compile"
+    "Hi world My name is Hello"
   ]
 }

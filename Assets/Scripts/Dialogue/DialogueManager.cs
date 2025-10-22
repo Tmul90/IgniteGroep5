@@ -1,8 +1,15 @@
+using Dialogue;
+using NPC;
 using UnityEngine;
+using UnityEngine.UI;
 using Util;
 
 public class DialogueManager : Singleton<DialogueManager>
 {
+    [SerializeField] private Texture2D npcSprite; 
+    [SerializeField] private Image playerSprite; 
+    [SerializeField] private Text dialogueText; 
+    
     /// <summary>
     /// Retrieves all Dialogues at the awake step
     /// </summary>
@@ -37,5 +44,18 @@ public class DialogueManager : Singleton<DialogueManager>
         
         Debug.LogWarning($"Dialogue with ID '{id}' not found.");
         return null;
+    }
+
+    public void StartDialogue(NpcObject currentNpc, string dialogueId)
+    {
+        npcSprite = currentNpc.npcSprite.texture;
+
+        var dialogueData = GetDialogueDataById(dialogueId);
+    }
+
+    public void GenerateDialogueText(Color npcColor, DialogueData dialogueData)
+    {
+        
+        dialogueText.text = dialogueData.dialogues[0];
     }
 }
