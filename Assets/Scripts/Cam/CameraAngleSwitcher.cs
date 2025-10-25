@@ -5,14 +5,26 @@ namespace Cam
 {
     public class CameraAngleSwitcher : MonoBehaviour
     {
-        [SerializeField] private Image display; // UI img die gedisplayed word
+        private Image display; // UI img die gedisplayed word
 
         [SerializeField] private Sprite[] angles; // verschillende hoeken van de kamer
 
         [SerializeField] private int currentAngle = 0; // currente hoek
-        // Start is called once before the first execution of Update after the MonoBehaviour is created
-        void Start()
+        
+        void Awake()
         {
+            if (display == null) // zoekt voor object met de tag roomcam om de images aan door te geven
+            {
+                GameObject taggedObject = GameObject.FindGameObjectWithTag("RoomCam");
+                if (taggedObject != null)
+                {
+                    display = taggedObject.GetComponent<Image>();
+                }
+                else
+                {
+                    Debug.LogWarning("CameraAngleSwitcher: Geen object met tag 'RoomCam' gevonden in de scene");
+                }
+            }
             UpdateView();
         }
 
@@ -23,13 +35,13 @@ namespace Cam
             {
                 ChangeAngle(-1);
             }
-            if (Input.GetKeyDown(KeyCode.D))
+            if (Input.GetKeyDown(KeyCode.D)) // 1 hoek vooruit
             {
                 ChangeAngle(1);
             }
         }
 
-        private void ChangeAngle(int direction)
+        private void ChangeAngle(int direction) // veranderd camera hoek
         {
             currentAngle += direction;
             if (currentAngle < 0)
@@ -43,7 +55,7 @@ namespace Cam
             UpdateView();
         }
 
-        private void UpdateView()
+        private void UpdateView() // veranderd de image naar de index nummer
         {
             display.sprite = angles[currentAngle];
         }
