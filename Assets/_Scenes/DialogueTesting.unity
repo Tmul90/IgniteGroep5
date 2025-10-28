@@ -256,6 +256,17 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
+--- !u!114 &1371478979 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5025792058829118559, guid: 3a1afe345d3a61c42a666c0460a72a97, type: 3}
+  m_PrefabInstance: {fileID: 4492956482022039733}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1433877151
 GameObject:
   m_ObjectHideFlags: 0
@@ -488,6 +499,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1959911139 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1114115976845401519, guid: 3a1afe345d3a61c42a666c0460a72a97, type: 3}
+  m_PrefabInstance: {fileID: 4492956482022039733}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2107818473
 GameObject:
   m_ObjectHideFlags: 0
@@ -712,9 +734,17 @@ PrefabInstance:
     m_TransformParent: {fileID: 1633610231}
     m_Modifications:
     - target: {fileID: 1476802111239309785, guid: 9c32c0077bc394946a50c9510f5c6edf, type: 3}
+      propertyPath: npcObject
+      value: 
+      objectReference: {fileID: 11400000, guid: a69ae81423d250b44871febda22c4334, type: 2}
+    - target: {fileID: 1476802111239309785, guid: 9c32c0077bc394946a50c9510f5c6edf, type: 3}
       propertyPath: npcSprite
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1371478979}
+    - target: {fileID: 1476802111239309785, guid: 9c32c0077bc394946a50c9510f5c6edf, type: 3}
+      propertyPath: dialogueText
+      value: 
+      objectReference: {fileID: 1959911139}
     - target: {fileID: 1476802111239309785, guid: 9c32c0077bc394946a50c9510f5c6edf, type: 3}
       propertyPath: playerSprite
       value: 

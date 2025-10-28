@@ -1,15 +1,24 @@
+using System;
 using Dialogue;
 using NPC;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using Util;
 
 public class DialogueManager : Singleton<DialogueManager>
 {
-    [SerializeField] private Texture2D npcSprite; 
+    [SerializeField] private Image npcSprite; 
     [SerializeField] private Image playerSprite; 
-    [SerializeField] private Text dialogueText; 
+    [SerializeField] private TMP_Text dialogueText;
     
+    [SerializeField] private NpcObject npcObject;
+
+    private void Update()
+    {
+        StartDialogue(npcObject, "0.0");
+    }
+
     /// <summary>
     /// Retrieves all Dialogues at the awake step
     /// </summary>
@@ -34,7 +43,7 @@ public class DialogueManager : Singleton<DialogueManager>
     /// </summary>
     /// <param name="id">The id of the dialogue</param>
     /// <returns>The DialogueData Containing the Dialogue</returns>
-    public DialogueData GetDialogueDataById(string id)
+    private DialogueData GetDialogueDataById(string id)
     {
         if (DialogueLibrary._dialogueDict.TryGetValue(id, out var entry))
         {
@@ -48,14 +57,16 @@ public class DialogueManager : Singleton<DialogueManager>
 
     public void StartDialogue(NpcObject currentNpc, string dialogueId)
     {
-        npcSprite = currentNpc.npcSprite.texture;
+        npcSprite.sprite = currentNpc.npcSprite;
 
         var dialogueData = GetDialogueDataById(dialogueId);
+        
+        GenerateDialogueText(currentNpc.npcColor, dialogueData);
     }
 
-    public void GenerateDialogueText(Color npcColor, DialogueData dialogueData)
+    private void GenerateDialogueText(Color npcColor, DialogueData dialogueData)
     {
-        
         dialogueText.text = dialogueData.dialogues[0];
+        dialogueText.color = npcColor;
     }
 }
