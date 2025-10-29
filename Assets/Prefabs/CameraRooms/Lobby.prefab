@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &4732763523577579783
+--- !u!1 &934125912354750005
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,22 +8,22 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 8873010891945910796}
-  - component: {fileID: 3332622395912741400}
+  - component: {fileID: 7413794416562592961}
+  - component: {fileID: 6181021065445911730}
   m_Layer: 0
-  m_Name: Room1
+  m_Name: Lobby
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &8873010891945910796
+--- !u!4 &7413794416562592961
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4732763523577579783}
+  m_GameObject: {fileID: 934125912354750005}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 2.2892556, y: 2.516185, z: -4.050585}
@@ -32,20 +32,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3332622395912741400
+--- !u!114 &6181021065445911730
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4732763523577579783}
+  m_GameObject: {fileID: 934125912354750005}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f432f33873de7dd4a8f50028416ac26b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   angles:
-  - {fileID: 21300000, guid: c7b675aafde789f4eb7a22d1fc48cb3a, type: 3}
-  - {fileID: 21300000, guid: b436520d4a969a641b3fb0fe842479b4, type: 3}
-  - {fileID: 21300000, guid: 0862842d171ca8448b443ba2dc45f71e, type: 3}
+  - {fileID: 21300000, guid: e6becd464918c294d8c215235bce0b88, type: 3}
+  - {fileID: 21300000, guid: 707e7e8cc93518c49961b2c9118f9229, type: 3}
+  - {fileID: 21300000, guid: 3bf64d04b01a5094b949dbca0e3d54a9, type: 3}
   currentAngle: 0
