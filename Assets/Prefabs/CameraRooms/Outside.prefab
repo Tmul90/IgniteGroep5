@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7413794416562592961}
   - component: {fileID: 6181021065445911730}
   m_Layer: 0
-  m_Name: Room2
+  m_Name: Outside
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -44,9 +44,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f432f33873de7dd4a8f50028416ac26b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  display: {fileID: 0}
   angles:
-  - {fileID: 21300000, guid: d0268e75db2fbb345ba78d0c99f85181, type: 3}
-  - {fileID: 21300000, guid: e8eaa17c96313b149a4040b4c1bb0eb3, type: 3}
-  - {fileID: 21300000, guid: df994b8fe3503a54fb6af454da0fa0dd, type: 3}
+  - {fileID: 21300000, guid: 276dc720b9ff897458135645af955c37, type: 3}
   currentAngle: 0

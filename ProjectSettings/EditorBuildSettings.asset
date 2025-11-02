@@ -9,8 +9,20 @@ EditorBuildSettings:
     path: Assets/_Scenes/MainMenu.unity
     guid: 44f5fd94e9125644aa63cec79400f9c3
   - enabled: 1
-    path: Assets/_Scenes/GameScene.unity
-    guid: 2567178dc50bc3b44b70c7b8da7fd6e9
+    path: Assets/_Scenes/Camera.unity
+    guid: 501a145ae7b50484e823f302d3657eab
+  - enabled: 1
+    path: Assets/_Scenes/AccuseScene.unity
+    guid: b4a4a464742dfac48acfd24a9ae18007
+  - enabled: 1
+    path: Assets/_Scenes/EndScenes/GraceEndScene.unity
+    guid: 79bca9aa1a652a045a0bdb7d5988b964
+  - enabled: 1
+    path: Assets/_Scenes/EndScenes/DiegoEndScene.unity
+    guid: f7dc8dbb7ce6c1c44a33bccd63dc68cd
+  - enabled: 1
+    path: Assets/_Scenes/EndScenes/JoseEndScene.unity
+    guid: 6daa67fec7f90a94e8ee7234c69ff967
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0
