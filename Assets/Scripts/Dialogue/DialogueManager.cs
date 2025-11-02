@@ -8,21 +8,35 @@ using Util;
 
 public class DialogueManager : Singleton<DialogueManager>
 {
-    [SerializeField] private Image npcSprite; 
-    [SerializeField] private Image playerSprite; 
-    [SerializeField] private TMP_Text dialogueText;
+    [SerializeField] private RawImage npcSpriteContainer; 
+    [SerializeField] private TMP_Text dialogueTextPrefab;
     
-    [SerializeField] private NpcObject npcObject;
+    [SerializeField] private Transform buttonContainer;
+    [SerializeField] private GameObject buttonPrefab;
+    
+    [SerializeField] private GameObject DialoguePopup;
+    
+    [SerializeField] private Transform dialogueTextSpawnLocation;
 
-    private void Update()
-    {
-        StartDialogue(npcObject, "0.0");
-    }
+    private NpcObject currentNpcRef;
+    private int currentLineIndex;
+    private DialogueData currentDialogueDataRef;
+    private bool dialogueHasStarted;
+    private TMP_Text dialogueText;
 
     /// <summary>
     /// Retrieves all Dialogues at the awake step
     /// </summary>
-    private new void Awake() => RetrieveAllDialogues();
+    private new void Awake()
+    {
+        DialoguePopup.SetActive(false);
+        RetrieveAllDialogues();
+    }
+
+    private void Update()
+    {
+        if (dialogueHasStarted) if (Input.GetKeyDown(KeyCode.Space)) OnSpacePressed();
+    }
 
     /// <summary>
     /// Searches the Resource/Dialogues folder for any TextAsset files and adds them to the Dictionary in the form of DialogueData
@@ -34,7 +48,7 @@ public class DialogueManager : Singleton<DialogueManager>
         foreach (var file in dialogueFiles)
         {
             var entry = JsonUtility.FromJson<DialogueData>(file.text);
-            DialogueLibrary._dialogueDict.Add(entry.id, entry);
+            DialogueLibrary._dialogueDict.TryAdd(entry.id, entry);
         }
     }
 
@@ -55,18 +69,67 @@ public class DialogueManager : Singleton<DialogueManager>
         return null;
     }
 
-    public void StartDialogue(NpcObject currentNpc, string dialogueId)
+    private void OnSpacePressed()
     {
-        npcSprite.sprite = currentNpc.npcSprite;
+        if (currentDialogueDataRef == null) return;
 
-        var dialogueData = GetDialogueDataById(dialogueId);
-        
-        GenerateDialogueText(currentNpc.npcColor, dialogueData);
+        currentLineIndex++;
+
+        if (currentLineIndex < currentDialogueDataRef.dialogues.Length)
+        {
+            GenerateDialogueText(currentLineIndex);
+        }
+        else
+        {
+            EndDialogue();
+        }
     }
 
-    private void GenerateDialogueText(Color npcColor, DialogueData dialogueData)
+    private void EndDialogue()
     {
-        dialogueText.text = dialogueData.dialogues[0];
-        dialogueText.color = npcColor;
+        dialogueHasStarted = false;
+        Destroy(dialogueText);
+        CreateResponseButtons();
+    }
+
+    public void StartDialogue(NpcObject currentNpc, string dialogueId)
+    {
+        dialogueText = Instantiate(dialogueTextPrefab, dialogueTextSpawnLocation).GetComponent<TMP_Text>();
+        dialogueHasStarted = true;
+        
+        npcSpriteContainer.texture = currentNpc.npcSprite.texture;
+        
+        DialoguePopup.SetActive(true);
+        currentNpcRef = currentNpc;
+        currentNpc.npcSprite = currentNpc.npcSprite;
+
+        var dialogueData = GetDialogueDataById(dialogueId);
+        currentDialogueDataRef = dialogueData;
+        
+        currentLineIndex = 1;
+        
+        
+        GenerateDialogueText(currentLineIndex);
+    }
+
+    private void GenerateDialogueText(int dialogueIndex)
+    {
+        dialogueText.text = currentDialogueDataRef.dialogues[dialogueIndex];
+        currentLineIndex++;
+    }
+
+    private void CreateResponseButtons()
+    {
+        for (int i = 0; i < currentDialogueDataRef.playerResponses.Length; i++)
+        {
+            var newButtonObj = Instantiate(buttonPrefab, buttonContainer);
+            newButtonObj.name = currentDialogueDataRef.playerResponses[i];
+        
+            var newButton = newButtonObj.GetComponent<Button>();
+        
+            newButtonObj.GetComponentInChildren<TMP_Text>().text = currentDialogueDataRef.playerResponses[i];
+        
+            newButton.onClick.AddListener(() => StartDialogue(currentNpcRef, currentDialogueDataRef.id + "." +i));
+        }
     }
 }
