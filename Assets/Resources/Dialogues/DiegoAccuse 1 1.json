@@ -1,11 +1,10 @@
 {
   "id": "DiegoAccuse 1 1",
   "dialogues": [
-    "Ebenezer: Diego, you are the culprit.",
-    "Diego: …",
-    "Ebenezer: The evidence supports this claim enough.",
-    "Ebenezer: It’s over for you.",
-    "Diego: …"
+    "Ebenezer:  …Diego, perhaps you are not the murderer… ",
+    "Diego: Ah- Th- thank you so much!",
+    "Ebenezer: … I cannot say who was behind this crime.",
+    "Ebenezer: This case is out of my hands."
   ],
   "playerResponses": [
   ]
