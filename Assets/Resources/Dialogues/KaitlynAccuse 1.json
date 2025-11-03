@@ -1,0 +1,15 @@
+{
+  "id": "KaitlynAccuse 1",
+  "dialogues": [
+    "Ebenezer: Kaitlyn, you are the one behind this murder.",
+    "Kaitlyn: Seriously? You’re seriously accusing me of this crime?",
+    "Kaitlyn: Are you out of your mind?!",
+    "Ebenezer: I am not, unfortunately.",
+    "Ebenezer: I have found evidence that supports the fact that you were the one who brought the victim to her demise."
+  ],
+  "playerResponses": [
+    "I… actually don’t have any proof.",
+    "…Kaitlyn is not the culprit.",
+    "These particular files"
+  ]
+}

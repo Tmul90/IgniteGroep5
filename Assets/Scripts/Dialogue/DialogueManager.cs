@@ -21,6 +21,11 @@ public class DialogueManager : Singleton<DialogueManager>
     
     [SerializeField] private RawImage background;
     [SerializeField] private RawImage npcNamePlate;
+    
+    [SerializeField] private MenuManager kathlynManager;
+    [SerializeField] private MenuManager graceManager;
+    [SerializeField] private MenuManager joseManager;
+    [SerializeField] private MenuManager diegoManager;
 
     private NpcObject currentNpcRef;
     private int currentLineIndex;
@@ -29,6 +34,7 @@ public class DialogueManager : Singleton<DialogueManager>
     private TMP_Text dialogueText;
     private List<GameObject> buttons = new List<GameObject>();
     private string originalId;
+    private bool _isAccuseScene;
 
     /// <summary>
     /// Retrieves all Dialogues at the awake step
@@ -63,7 +69,7 @@ public class DialogueManager : Singleton<DialogueManager>
     /// </summary>
     /// <param name="id">The id of the dialogue</param>
     /// <returns>The DialogueData Containing the Dialogue</returns>
-    private DialogueData GetDialogueDataById(string id)
+    public DialogueData GetDialogueDataById(string id)
     {
         if (DialogueLibrary._dialogueDict.TryGetValue(id, out var entry))
         {
@@ -98,8 +104,12 @@ public class DialogueManager : Singleton<DialogueManager>
         CreateResponseButtons();
     }
 
-    public void StartDialogue(NpcObject currentNpc, string dialogueId)
+    public void StartDialogue(NpcObject currentNpc, string dialogueId, DialogueData dialogueData, bool isAccuseScene)
     {
+        _isAccuseScene = isAccuseScene;
+        
+        originalId = dialogueId;
+        
         if (dialogueText != null) Destroy(dialogueText);
         dialogueText = Instantiate(dialogueTextPrefab, dialogueTextSpawnLocation).GetComponent<TMP_Text>();
         dialogueHasStarted = true;
@@ -111,8 +121,7 @@ public class DialogueManager : Singleton<DialogueManager>
         DialoguePopup.SetActive(true);
         currentNpcRef = currentNpc;
         background.texture = currentNpc.npcBackground.texture;
-
-        var dialogueData = GetDialogueDataById(dialogueId);
+        
         currentDialogueDataRef = dialogueData;
         
         currentLineIndex = 0;
@@ -124,52 +133,123 @@ public class DialogueManager : Singleton<DialogueManager>
     {
         dialogueText.text = currentDialogueDataRef.dialogues[currentLineIndex];
     }
-
+    
     private void CreateResponseButtons()
     {
-        for (int i = 0; i < currentDialogueDataRef.playerResponses.Length; i++)
+        void ClearButtons()
         {
-             var buttonPrefabInstance = Instantiate(buttonPrefab, buttonContainer);
-            buttonPrefabInstance.name = currentDialogueDataRef.playerResponses[i];
-            
-            var newButton = buttonPrefabInstance.GetComponent<Button>();
-        
-            buttonPrefabInstance.GetComponentInChildren<TMP_Text>().text = currentDialogueDataRef.playerResponses[i];
-
-            buttons.Add(buttonPrefabInstance);
-
-            var index = i;
-            newButton.onClick.AddListener(() =>
-                {
-                    StartDialogue(currentNpcRef, originalId + " " + index);
-                    
-                    foreach (var btn in buttons)
-                        Destroy(btn);
-                    buttons.Clear();
-                }
-            );
-        }
-        var endButtonInstance = Instantiate(buttonPrefab, buttonContainer);
-        endButtonInstance.name = "EndDialogue";
-
-        var endButton = endButtonInstance.GetComponent<Button>();
-        endButtonInstance.GetComponentInChildren<TMP_Text>().text = "End Dialogue";
-
-        buttons.Add(endButtonInstance);
-
-        endButton.onClick.AddListener(() =>
-        {
-            DialoguePopup.SetActive(false);
-
-            // Destroy all buttons
             foreach (var btn in buttons)
-            {
                 if (btn != null)
                     Destroy(btn);
-            }
             buttons.Clear();
-        });
+        }
+
+        bool hasResponses = currentDialogueDataRef.playerResponses != null && currentDialogueDataRef.playerResponses.Length > 0;
+
+        if (_isAccuseScene && !hasResponses)
+        {
+            // Accuse scene with no more responses → only Accuse button
+            var accuseButtonInstance = Instantiate(buttonPrefab, buttonContainer);
+            accuseButtonInstance.name = "AccuseButton";
+
+            var accuseButton = accuseButtonInstance.GetComponent<Button>();
+            accuseButtonInstance.GetComponentInChildren<TMP_Text>().text = "Accuse";
+
+            buttons.Add(accuseButtonInstance);
+
+            accuseButton.onClick.AddListener(() =>
+            {
+                DialoguePopup.SetActive(false);
+                ClearButtons();
+
+                var manager = GetManagerForCurrentNpc();
+                if (manager != null)
+                    manager.PlayGame();
+                else
+                    Debug.LogWarning("No MenuManager found for current NPC!");
+            });
+
+            return;
+        }
+
+        // Normal responses (or first dialogues in accuse scene that still have responses)
+        if (hasResponses)
+        {
+            for (int i = 0; i < currentDialogueDataRef.playerResponses.Length; i++)
+            {
+                var buttonPrefabInstance = Instantiate(buttonPrefab, buttonContainer);
+                buttonPrefabInstance.name = currentDialogueDataRef.playerResponses[i];
+
+                var newButton = buttonPrefabInstance.GetComponent<Button>();
+                buttonPrefabInstance.GetComponentInChildren<TMP_Text>().text = currentDialogueDataRef.playerResponses[i];
+
+                buttons.Add(buttonPrefabInstance);
+
+                int index = i; // capture index for closure
+                var nextDialogueData = GetDialogueDataById(originalId + " " + index);
+
+                newButton.onClick.AddListener(() =>
+                {
+                    // Start next dialogue
+                    StartDialogue(currentNpcRef, originalId + " " + index, nextDialogueData, _isAccuseScene);
+                    ClearButtons();
+                });
+            }
+        }
+
+        // Add End Dialogue button for normal dialogues (non-accuse scenes)
+        if (!_isAccuseScene)
+        {
+            var endButtonInstance = Instantiate(buttonPrefab, buttonContainer);
+            endButtonInstance.name = "EndDialogue";
+
+            var endButton = endButtonInstance.GetComponent<Button>();
+            endButtonInstance.GetComponentInChildren<TMP_Text>().text = "End Dialogue";
+
+            buttons.Add(endButtonInstance);
+
+            endButton.onClick.AddListener(() =>
+            {
+                DialoguePopup.SetActive(false);
+                ClearButtons();
+            });
+        }
+    }
+
+
+    
+    private MenuManager GetManagerForCurrentNpc()
+    {
+        // Safety check
+        if (currentNpcRef == null)
+        {
+            Debug.LogWarning("No current NPC reference found.");
+            return null;
+        }
+
+        // Use either currentNpcRef.npcName or currentNpcRef.name depending on your setup
+        string npcName = currentNpcRef.npcName;
+
+        switch (npcName)
+        {
+            case "Kaitlyn":
+                return kathlynManager;
+            case "Grace":
+                return graceManager;
+            case "Jose":
+                return joseManager;
+            case "Diego":
+                return diegoManager;
+            default:
+                Debug.LogWarning($"No MenuManager found for NPC name: {npcName}");
+                return null;
+        }
     }
 
     public void SetOriginalDialogueId(string id) => originalId = id;
+
+    public void SetAccuseSceneButtons()
+    {
+
+    }
 }

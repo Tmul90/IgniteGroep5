@@ -1,0 +1,18 @@
+{
+  "id": "GraceAccuse 1",
+  "dialogues": [
+    "Ebenezer: Grace, you are the one behind this murder.",
+    "Grace: Wh…What?? Me?! A M-MURDER?",
+    "Grace: I- I don’t know what you’re t-talking about!",
+    "Grace: As f-far as I know, I-I never saw a b-body anywhere!",
+    "Ebenezer: Unfortunately it’s true. I found her earlier today in a dumpster next to the building.",
+    "Grace: That’s i-insane! And you think I-I was the one who did it??",
+    "Ebenezer: I have evidence that supports the fact that you were the one who brought our victim to her demise."
+  ],
+  "playerResponses": [
+    "I… actually don’t have any proof.",
+    "…Grace is not the culprit.",
+    "These pills (if found)"
+  ]
+}
+

@@ -584,6 +584,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4f69e224da3ec524b8d5c5f63ffdebc7, type: 3}
+--- !u!4 &125522609 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3617728253893415476, guid: ddc96a2b067480249ac1d54f27d820be, type: 3}
+  m_PrefabInstance: {fileID: 1888977671}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &128318215
 GameObject:
   m_ObjectHideFlags: 0
@@ -2597,6 +2602,7 @@ GameObject:
   m_Component:
   - component: {fileID: 849807468}
   - component: {fileID: 849807467}
+  - component: {fileID: 849807469}
   m_Layer: 0
   m_Name: Accuse Manager
   m_TagString: Untagged
@@ -2634,6 +2640,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &849807469
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 849807466}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea51e0aa341bc5a489966bd34b56438f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueManager: {fileID: 1767907412}
+  kathlynNpc: {fileID: 11400000, guid: c72811a3d9c54b746908c77e7773e115, type: 2}
 --- !u!1 &862242407
 GameObject:
   m_ObjectHideFlags: 0
@@ -2717,9 +2737,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 22796212}
-        m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
-        m_MethodName: PlayGame
+      - m_Target: {fileID: 849807469}
+        m_TargetAssemblyTypeName: AccuseSceneDialogues, Assembly-CSharp
+        m_MethodName: StartAccuseSceneKathlyn
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4897,6 +4917,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 1632331409}
+  spawnPoint: {fileID: 550556619}
+  spawnPointLookat: {fileID: 125522609}
 --- !u!4 &1681513780
 Transform:
   m_ObjectHideFlags: 0
@@ -5056,6 +5078,10 @@ MonoBehaviour:
   dialogueTextSpawnLocation: {fileID: 388148225}
   background: {fileID: 764675438}
   npcNamePlate: {fileID: 1535515587}
+  kathlynManager: {fileID: 22796212}
+  graceManager: {fileID: 93163820}
+  joseManager: {fileID: 82675803}
+  diegoManager: {fileID: 1189087416}
 --- !u!4 &1767907413
 Transform:
   m_ObjectHideFlags: 0

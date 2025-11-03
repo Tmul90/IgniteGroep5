@@ -26,7 +26,9 @@ public class NpcActor : MonoBehaviour
 
     private void OnMouseDown()
     {
-        dialogueManager.StartDialogue(npcScriptableObject, npcName + " 1");
+        var dialogueData = dialogueManager.GetDialogueDataById(npcName + " 1");
+        
+        dialogueManager.StartDialogue(npcScriptableObject, npcName + " 1", dialogueData, false);
         dialogueManager.SetOriginalDialogueId(npcName + " 1");
     }
 }
