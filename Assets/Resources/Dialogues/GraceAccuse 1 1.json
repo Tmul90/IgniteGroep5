@@ -1,13 +1,10 @@
 {
   "id": "GraceAccuse 1 1",
   "dialogues": [
-    "Ebenezer: Grace, you are the culprit.",
-    "Grace: …",
-    "Grace: UAAAAAHHHHHHHHHH!!!! IT’S NOT FAIR, IT’S NOT FAIR, NOT FAIR NOT FAIR NOT FAIR!!!! I DIDN’T DO IT! IT WASN’T ME, WHY WON’T YOU UNDERSTAND?!",
-    "Grace: DON’T TAKE MY BOY AWAY, DON’T LET HIM GO BACK, PLEASE!! WITHOUT ME, HE’LL LIVE A HORRIBLE LIFE!!",
-    "Ebenezer: The evidence supports this claim enough.",
-    "Ebenezer: It’s over for you.",
-    "Grace: … You… Y-You are truly H-HORRIBLE! One day… Y-you’ll pay for your sins!"
+    "Ebenezer:  …Grace, perhaps you are not the murderer… ",
+    "Grace: I t-told you I’m not! ",
+    "Ebenezer:  … I cannot say who was behind this crime.",
+    "Ebenezer: This case is out of my hands."
   ],
   "playerResponses": [
   ]
