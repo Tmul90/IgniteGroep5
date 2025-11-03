@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics;
 using UnityEngine;
 
 public class RestartGame : MonoBehaviour
@@ -7,6 +8,13 @@ public class RestartGame : MonoBehaviour
     
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Backspace)) menuManager.PlayGame();
+        if (Input.GetKeyDown(KeyCode.Backspace))
+        {
+            string exePath = Application.dataPath.Replace("_Data", ".exe");
+            
+            Process.Start(exePath);
+            
+            Application.Quit();
+        }
     }
 }

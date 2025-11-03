@@ -1,10 +1,9 @@
 {
   "id": "GraceAccuse 1 0",
   "dialogues": [
-    "Ebenezer: …Grace, perhaps you are not the murderer…",
-    "Grace: I t-told you I’m not!",
-    "Ebenezer: … I cannot say who was behind this crime.",
-    "Ebenezer: This case is out of my hands."
+    "Ebenezer: I actually… Don’t have any proof.",
+    "Grace: Th-That’s because I didn’t do it! It m-must have been someone else! ",
+    "Ebenezer: … I can’t let her get arrested without proof. It’s over."
   ],
   "playerResponses": [
   ]
