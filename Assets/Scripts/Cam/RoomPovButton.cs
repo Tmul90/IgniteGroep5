@@ -7,5 +7,9 @@ public class RoomPovButton : MonoBehaviour
     [SerializeField] private Transform target;
     [SerializeField] private CameraManager camManager;
 
-    private void OnMouseDown() => camManager.CameraLookAt(target);
+    private void OnMouseDown()
+    {
+        MapButton._map.transform.position = MapButton._mapIdleTarget.position;
+        camManager.CameraLookAt(target);
+    }
 }
