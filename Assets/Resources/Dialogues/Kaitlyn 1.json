@@ -1,0 +1,21 @@
+{
+  "id": "Kaitlyn 1",
+  "dialogues": [
+    "Ebenezer: Hello, miss, you… are the manager of this place, correct?",
+    "Kaitlyn: Manager? You serious? I. own. it!",
+    "Kaitlyn: What do you want?",
+    "Ebenezer: It regrets me to inform you that there’s been a murder.",
+    "Kaitlyn: …what? You’re kidding, right? Ugh. Do I have to call the police?",
+    "Ebenezer: No I’m quite serious I’m afraid.",
+    "Ebenezer: But I have it under control.",
+    "Ebenezer: If you wouldn’t mind, could you tell me what you know about my fellow visitors?",
+    "Kaitlyn: I suppose, who do you want to know about?"
+  ],
+  "playerResponses": [
+    "You...",
+    "That lady outside",
+    "The tensed-up lady",
+    "That middle-aged man",
+    "Your worker, Diego"
+  ]
+}

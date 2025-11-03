@@ -1,0 +1,18 @@
+{
+  "id": "Grace 1",
+  "dialogues": [
+    "Ebenezer: Hey, miss.",
+    "Grace: Oh, U-uh, what? W-who are you, w-what do you want?",
+    "Narration: She seems rather on edge…",
+    "Ebenezer: The name’s Ebenezer Crow. Could you tell me a bit about the other visitors?",
+    "Grace: Uh… A-Alright, I suppose.",
+    "Ebenezer: Thank you, miss. I’d like to know about…"
+  ],
+  "playerResponses": [
+    "You...",
+    "That lady outside",
+    "That businesswoman",
+    "That middle-aged man",
+    "That Motel worker"
+  ]
+}
