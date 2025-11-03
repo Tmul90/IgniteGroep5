@@ -1,0 +1,16 @@
+{
+  "id": "DiegoAccuse 1",
+  "dialogues": [
+    "Ebenezer: Diego, you are the one behind this murder.",
+    "Diego: W…What? You’re- you’re accusing me?",
+    "Diego: Of a… murder?",
+    "Ebenezer: Indeed. I found Martha deceased in the dumpster earlier today.",
+    "Ebenezer: It is unknown how she passed but I have reasons to believe you were the one behind her demise.",
+    "Diego: …What?"
+  ],
+  "playerResponses": [
+    "…Diego is not the culprit.",
+    "I… actually don’t have any proof.",
+    "This positive pregnancy test"
+  ]
+}
