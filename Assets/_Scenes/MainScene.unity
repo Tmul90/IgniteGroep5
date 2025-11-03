@@ -453,7 +453,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f647628d435a2ee43aaa2f86c78cfd25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextSceneName: JoseEndScreen
+  nextSceneName: JoseEndScene
 --- !u!1 &93163818
 GameObject:
   m_ObjectHideFlags: 0
@@ -1770,9 +1770,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 93163820}
-        m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
-        m_MethodName: PlayGame
+      - m_Target: {fileID: 849807469}
+        m_TargetAssemblyTypeName: AccuseSceneDialogues, Assembly-CSharp
+        m_MethodName: StartAccuseSceneGrace
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2654,6 +2654,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueManager: {fileID: 1767907412}
   kathlynNpc: {fileID: 11400000, guid: c72811a3d9c54b746908c77e7773e115, type: 2}
+  diegoNpc: {fileID: 11400000, guid: 711650abcd99af24d9c2b150e2284480, type: 2}
+  graceNpc: {fileID: 11400000, guid: cb0c77e4b894e76408f94fdb02499c3c, type: 2}
+  joseNpc: {fileID: 11400000, guid: 28b88a9b2c5ab1d44ac30ed02c09077c, type: 2}
 --- !u!1 &862242407
 GameObject:
   m_ObjectHideFlags: 0
@@ -3960,9 +3963,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 82675803}
-        m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
-        m_MethodName: PlayGame
+      - m_Target: {fileID: 849807469}
+        m_TargetAssemblyTypeName: AccuseSceneDialogues, Assembly-CSharp
+        m_MethodName: StartAccuseSceneJose
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4371,9 +4374,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1189087416}
-        m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
-        m_MethodName: PlayGame
+      - m_Target: {fileID: 849807469}
+        m_TargetAssemblyTypeName: AccuseSceneDialogues, Assembly-CSharp
+        m_MethodName: StartAccuseSceneDiego
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
