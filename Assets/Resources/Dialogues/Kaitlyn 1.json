@@ -1,0 +1,9 @@
+{
+  "id": "1",
+  "dialogues": [
+    "Hello world!"
+  ],
+  "playerResponses": [
+    "Hi world My name is Hello"
+  ]
+}

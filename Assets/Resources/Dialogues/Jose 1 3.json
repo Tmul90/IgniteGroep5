@@ -1,10 +1,16 @@
 {
   "id": "Jose 1 2",
   "dialogues": [
-    "Jose: ",
-    "Jose: ",
-    "Jose: ",
-    "Jose: "
+    "Ah, she owns the place, but that’s about all I know.",
+    "Jose: Oh!",
+    "Jose: She’s also the mother of the janitor here.",
+    "Jose: They don’t get along great from what I’ve heard.",
+    "Jose: I think she’s just been putting too much pressure on the boy after they both lost his father.",
+    "Jose: But I prefer not to get involved. They’re family after all.",
+    "Jose: And I have full faith that they’ll work it out.",
+    "Jose: I mean, that’s how it was with my family after all, pal. Ha-ha.",
+    "Ebenezer: Your family, hmm? Could you tell me more about that?",
+    "Jose: Another time, maybe, ha-ha. The story’s much too long."
   ],
   "playerResponses": [
     "You...",
