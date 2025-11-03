@@ -1,0 +1,17 @@
+{
+  "id": "Jose 1",
+  "dialogues": [
+    "Ebenezer: Say, sir, could you...",
+    "Jose: Whad'ya need pal?",
+    "Ebenezer: Um... could you tell me about some of my fellow visitors?",
+    "Jose: Well... Can't say i know most of them well, but i'll try.",
+    "Jose: So, who caught your eye"
+  ],
+  "playerResponses": [
+    "You...",
+    "The lady Outside",
+    "That business woman",
+    "The tensed-up lady.",
+    "That Motel worker."
+  ]
+}

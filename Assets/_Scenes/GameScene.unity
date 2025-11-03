@@ -271,6 +271,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   notepadUI: {fileID: 1106363691}
   inputField: {fileID: 1785963422}
+  openNotePad: 273
 --- !u!4 &769757134
 Transform:
   m_ObjectHideFlags: 0

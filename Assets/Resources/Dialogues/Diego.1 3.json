@@ -1,0 +1,17 @@
+{
+  "id": "Diego 1 2",
+  "dialogues": [
+    "Diego: Do you mean the one that runs the place?",
+    "Ebenezer: I believe so, Yes.",
+    "Diego: I know her well, she's my mother.",
+    "Diego: We haven't really talked much, since dad... well...",
+    "Diego: ...",
+    "Diego: She gave me this job, can't tell you much more than that, sorry."
+  ],
+  "playerResponses": [
+    "You...",
+    "The lady Outside",
+    "The tensed-up lady.",
+    "That Middle-aged man."
+  ]
+}

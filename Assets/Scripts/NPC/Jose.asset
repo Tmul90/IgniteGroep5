@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 918be4c42d933e749aed724e4f232627, type: 3}
+  m_Name: Jose
+  m_EditorClassIdentifier: 
+  npcName: Jose
+  npcSprite: {fileID: 1385776181, guid: 811c13f1a5492c5478cf45128ea73e28, type: 3}
+  npcColor: {r: 0, g: 0, b: 0, a: 0}
+  npcNameImage: {fileID: 21300000, guid: f01d912d46835e64e818ab1d00710062, type: 3}
+  npcBackground: {fileID: 21300000, guid: b436520d4a969a641b3fb0fe842479b4, type: 3}
+  npcImage: {fileID: 2800000, guid: 7435703886b07134a992be4c1cd56062, type: 3}
