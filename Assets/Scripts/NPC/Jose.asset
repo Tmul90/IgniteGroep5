@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 918be4c42d933e749aed724e4f232627, type: 3}
-  m_Name: Diego
+  m_Name: Jose
   m_EditorClassIdentifier: 
-  npcName: Diego
-  npcSprite: {fileID: -1148653994, guid: 10d793ec1587d0a45baf0e737da31d5d, type: 3}
-  npcColor: {r: 0.3584906, g: 0.12006053, b: 0.12006053, a: 0}
-  npcNameImage: {fileID: 21300000, guid: 3bf64d04b01a5094b949dbca0e3d54a9, type: 3}
+  npcName: Jose
+  npcSprite: {fileID: 1385776181, guid: 811c13f1a5492c5478cf45128ea73e28, type: 3}
+  npcColor: {r: 0, g: 0, b: 0, a: 0}
+  npcNameImage: {fileID: 21300000, guid: f01d912d46835e64e818ab1d00710062, type: 3}
   npcBackground: {fileID: 21300000, guid: b436520d4a969a641b3fb0fe842479b4, type: 3}
-  npcImage: {fileID: 2800000, guid: 1611a07504e11874f87fc3f0460e7b65, type: 3}
+  npcImage: {fileID: 2800000, guid: 7435703886b07134a992be4c1cd56062, type: 3}

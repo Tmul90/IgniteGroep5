@@ -10,5 +10,7 @@ namespace NPC
         public Sprite npcSprite; // The Sprite/Model of the NPC
         public Color npcColor;   // The color the NPC will have in dialogue 
         public Sprite npcNameImage;
+        public Sprite npcBackground;
+        public Texture npcImage;
     }
 }

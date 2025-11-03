@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Dialogue;
 using NPC;
 using TMPro;
@@ -17,12 +18,17 @@ public class DialogueManager : Singleton<DialogueManager>
     [SerializeField] private GameObject DialoguePopup;
     
     [SerializeField] private Transform dialogueTextSpawnLocation;
+    
+    [SerializeField] private RawImage background;
+    [SerializeField] private RawImage npcNamePlate;
 
     private NpcObject currentNpcRef;
     private int currentLineIndex;
     private DialogueData currentDialogueDataRef;
     private bool dialogueHasStarted;
     private TMP_Text dialogueText;
+    private List<GameObject> buttons = new List<GameObject>();
+    private string originalId;
 
     /// <summary>
     /// Retrieves all Dialogues at the awake step
@@ -77,7 +83,7 @@ public class DialogueManager : Singleton<DialogueManager>
 
         if (currentLineIndex < currentDialogueDataRef.dialogues.Length)
         {
-            GenerateDialogueText(currentLineIndex);
+            GenerateDialogueText();
         }
         else
         {
@@ -94,42 +100,76 @@ public class DialogueManager : Singleton<DialogueManager>
 
     public void StartDialogue(NpcObject currentNpc, string dialogueId)
     {
+        if (dialogueText != null) Destroy(dialogueText);
         dialogueText = Instantiate(dialogueTextPrefab, dialogueTextSpawnLocation).GetComponent<TMP_Text>();
         dialogueHasStarted = true;
+
+        npcNamePlate.texture = currentNpc.npcNameImage.texture;
         
-        npcSpriteContainer.texture = currentNpc.npcSprite.texture;
+        npcSpriteContainer.texture = currentNpc.npcImage;
         
         DialoguePopup.SetActive(true);
         currentNpcRef = currentNpc;
-        currentNpc.npcSprite = currentNpc.npcSprite;
+        background.texture = currentNpc.npcBackground.texture;
 
         var dialogueData = GetDialogueDataById(dialogueId);
         currentDialogueDataRef = dialogueData;
         
-        currentLineIndex = 1;
-        
-        
-        GenerateDialogueText(currentLineIndex);
+        currentLineIndex = 0;
+
+        GenerateDialogueText();
     }
 
-    private void GenerateDialogueText(int dialogueIndex)
+    private void GenerateDialogueText()
     {
-        dialogueText.text = currentDialogueDataRef.dialogues[dialogueIndex];
-        currentLineIndex++;
+        dialogueText.text = currentDialogueDataRef.dialogues[currentLineIndex];
     }
 
     private void CreateResponseButtons()
     {
         for (int i = 0; i < currentDialogueDataRef.playerResponses.Length; i++)
         {
-            var newButtonObj = Instantiate(buttonPrefab, buttonContainer);
-            newButtonObj.name = currentDialogueDataRef.playerResponses[i];
+             var buttonPrefabInstance = Instantiate(buttonPrefab, buttonContainer);
+            buttonPrefabInstance.name = currentDialogueDataRef.playerResponses[i];
+            
+            var newButton = buttonPrefabInstance.GetComponent<Button>();
         
-            var newButton = newButtonObj.GetComponent<Button>();
-        
-            newButtonObj.GetComponentInChildren<TMP_Text>().text = currentDialogueDataRef.playerResponses[i];
-        
-            newButton.onClick.AddListener(() => StartDialogue(currentNpcRef, currentDialogueDataRef.id + "." +i));
+            buttonPrefabInstance.GetComponentInChildren<TMP_Text>().text = currentDialogueDataRef.playerResponses[i];
+
+            buttons.Add(buttonPrefabInstance);
+
+            var index = i;
+            newButton.onClick.AddListener(() =>
+                {
+                    StartDialogue(currentNpcRef, originalId + " " + index);
+                    
+                    foreach (var btn in buttons)
+                        Destroy(btn);
+                    buttons.Clear();
+                }
+            );
         }
+        var endButtonInstance = Instantiate(buttonPrefab, buttonContainer);
+        endButtonInstance.name = "EndDialogue";
+
+        var endButton = endButtonInstance.GetComponent<Button>();
+        endButtonInstance.GetComponentInChildren<TMP_Text>().text = "End Dialogue";
+
+        buttons.Add(endButtonInstance);
+
+        endButton.onClick.AddListener(() =>
+        {
+            DialoguePopup.SetActive(false);
+
+            // Destroy all buttons
+            foreach (var btn in buttons)
+            {
+                if (btn != null)
+                    Destroy(btn);
+            }
+            buttons.Clear();
+        });
     }
+
+    public void SetOriginalDialogueId(string id) => originalId = id;
 }
