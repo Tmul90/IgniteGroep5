@@ -1,0 +1,20 @@
+{
+  "id": "JoseAccuse 1 2",
+  "dialogues": [
+    "Ebenezer: I found these keys near the body of the victim.",
+    "Ebenezer: These seem to be truck keys. They can only belong to…",
+    "Ebenezer: A truck driver.",
+    "José: Ah- So that’s where they were…",
+    "José: I’m sorry, I must have dropped them somehow somewhere…",
+    "José: But I can assure you, it has nothing to do with this crime, pal!",
+    "Ebenezer: I find that hard to believe…",
+    "José: You don’t truly believe I murdered an innocent lady, do you?",
+    "José: I don’t know how my keys ended up there, but I have nothing to do with this.",
+    "José: Besides, I have a family to take care of! Don’t you have a family? You understand how I feel, right pal?",
+    "José: They need me… They need me to survive!",
+    "Ebenezer: …I think they’ll be just fine.",
+    "José: !- Without my financial support, they’ll live a miserable life on the streets! They’d be in all sorts of danger! It wasn’t me, the real murderer must still be out there! Everyone’s lives here could still be in danger!"
+  ],
+  "playerResponses": [
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "id": "JoseAccuse 1",
+  "dialogues": [
+    "Ebenezer: José, you are the one behind this murder.",
+    "José: Pardon me? A murder?",
+    "Ebenezer: Indeed. I found the body of a lady earlier in the dumpster right outside the building.",
+    "José: That sounds terrible! But… You’re accusing me?",
+    "Ebenezer: Yes. I have evidence that supports this claim."
+  ],
+  "playerResponses": [
+    "…José is not the culprit.",
+    "I… actually don’t have any proof.",
+    "These keys (if found)"
+  ]
+}
