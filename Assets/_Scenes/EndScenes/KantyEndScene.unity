@@ -176,6 +176,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 97e0b731506096b46907e73ba8a3add1, type: 3}
+--- !u!114 &84909203 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5710467324417398819, guid: 97e0b731506096b46907e73ba8a3add1, type: 3}
+  m_PrefabInstance: {fileID: 84909202}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27b931e4d1db23343ab91bac1a2fb391, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &183999580
 GameObject:
   m_ObjectHideFlags: 0
@@ -706,9 +717,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 990628059}
-        m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
-        m_MethodName: PlayGame
+      - m_Target: {fileID: 84909203}
+        m_TargetAssemblyTypeName: RestartGame, Assembly-CSharp
+        m_MethodName: RestartTheGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

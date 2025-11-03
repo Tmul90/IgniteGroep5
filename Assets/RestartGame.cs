@@ -10,11 +10,16 @@ public class RestartGame : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Backspace))
         {
-            string exePath = Application.dataPath.Replace("_Data", ".exe");
-            
-            Process.Start(exePath);
-            
-            Application.Quit();
+            RestartTheGame();
         }
+    }
+
+    public void RestartTheGame()
+    {
+        var exePath = Application.dataPath.Replace("_Data", ".exe");
+            
+        Process.Start(exePath);
+            
+        Application.Quit();
     }
 }
