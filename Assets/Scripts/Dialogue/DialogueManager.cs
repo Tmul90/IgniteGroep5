@@ -106,49 +106,40 @@ public class DialogueManager : Singleton<DialogueManager>
 
     public void StartDialogue(NpcObject currentNpc, string dialogueId, DialogueData dialogueData, bool isAccuseScene)
     {
-        _isAccuseScene = isAccuseScene;
+        dialogueHasStarted = true;
         
-        originalId = dialogueId;
+        InitializeDialogue(currentNpc, dialogueId, dialogueData, isAccuseScene);
         
         if (dialogueText != null) Destroy(dialogueText);
         dialogueText = Instantiate(dialogueTextPrefab, dialogueTextSpawnLocation).GetComponent<TMP_Text>();
-        dialogueHasStarted = true;
-
-        npcNamePlate.texture = currentNpc.npcNameImage.texture;
-        
-        npcSpriteContainer.texture = currentNpc.npcImage;
         
         DialoguePopup.SetActive(true);
-        currentNpcRef = currentNpc;
-        background.texture = currentNpc.npcBackground.texture;
-        
-        currentDialogueDataRef = dialogueData;
         
         currentLineIndex = 0;
 
         GenerateDialogueText();
     }
-
-    private void GenerateDialogueText()
+    
+    private void InitializeDialogue(NpcObject currentNpc, string dialogueId, DialogueData dialogueData, bool isAccuseScene)
     {
-        dialogueText.text = currentDialogueDataRef.dialogues[currentLineIndex];
+        _isAccuseScene = isAccuseScene;
+        originalId = dialogueId;
+        npcNamePlate.texture = currentNpc.npcNameImage.texture;
+        npcSpriteContainer.texture = currentNpc.npcImage;
+        currentNpcRef = currentNpc;
+        background.texture = currentNpc.npcBackground.texture;
+        currentDialogueDataRef = dialogueData;
     }
+
+    private void GenerateDialogueText() => 
+        dialogueText.text = currentDialogueDataRef.dialogues[currentLineIndex];
     
     private void CreateResponseButtons()
     {
-        void ClearButtons()
-        {
-            foreach (var btn in buttons)
-                if (btn != null)
-                    Destroy(btn);
-            buttons.Clear();
-        }
-
-        bool hasResponses = currentDialogueDataRef.playerResponses != null && currentDialogueDataRef.playerResponses.Length > 0;
+        var hasResponses = currentDialogueDataRef.playerResponses != null && currentDialogueDataRef.playerResponses.Length > 0;
 
         if (_isAccuseScene && !hasResponses)
         {
-            // Accuse scene with no more responses → only Accuse button
             var accuseButtonInstance = Instantiate(buttonPrefab, buttonContainer);
             accuseButtonInstance.name = "AccuseButton";
 
@@ -171,8 +162,7 @@ public class DialogueManager : Singleton<DialogueManager>
 
             return;
         }
-
-        // Normal responses (or first dialogues in accuse scene that still have responses)
+        
         if (hasResponses)
         {
             for (int i = 0; i < currentDialogueDataRef.playerResponses.Length; i++)
@@ -185,7 +175,7 @@ public class DialogueManager : Singleton<DialogueManager>
 
                 buttons.Add(buttonPrefabInstance);
 
-                int index = i; // capture index for closure
+                var index = i;
                 var nextDialogueData = GetDialogueDataById(originalId + " " + index);
 
                 newButton.onClick.AddListener(() =>
@@ -196,8 +186,7 @@ public class DialogueManager : Singleton<DialogueManager>
                 });
             }
         }
-
-        // Add End Dialogue button for normal dialogues (non-accuse scenes)
+        
         if (!_isAccuseScene)
         {
             var endButtonInstance = Instantiate(buttonPrefab, buttonContainer);
@@ -214,21 +203,29 @@ public class DialogueManager : Singleton<DialogueManager>
                 ClearButtons();
             });
         }
+
+        return;
+
+        void ClearButtons()
+        {
+            foreach (var btn in buttons)
+                if (btn != null)
+                    Destroy(btn);
+            buttons.Clear();
+        }
     }
 
 
     
     private MenuManager GetManagerForCurrentNpc()
     {
-        // Safety check
         if (currentNpcRef == null)
         {
             Debug.LogWarning("No current NPC reference found.");
             return null;
         }
 
-        // Use either currentNpcRef.npcName or currentNpcRef.name depending on your setup
-        string npcName = currentNpcRef.npcName;
+        var npcName = currentNpcRef.npcName;
 
         switch (npcName)
         {
@@ -247,9 +244,4 @@ public class DialogueManager : Singleton<DialogueManager>
     }
 
     public void SetOriginalDialogueId(string id) => originalId = id;
-
-    public void SetAccuseSceneButtons()
-    {
-
-    }
 }
